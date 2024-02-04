@@ -83,7 +83,7 @@ curl -X DELETE http://localhost:8080/guideitems/{id}
 ```
 Deletes a GuideItem by sending a DELETE request to the specified endpoint. Replace {id} with the actual ID of the GuideItem.
 
-# Guide Controller
+# Guide Entity
 
 ## 1) Fetch Guides
 ```bash
