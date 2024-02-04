@@ -30,7 +30,6 @@ public class GuideItemController {
 
     @PutMapping("/{id}")
     public GuideItem updateGuideItem(@PathVariable Long id, @RequestBody GuideItem guideItem) {
-        // Предполагается, что сущность существует; вы можете добавить дополнительные проверки
         guideItem.setId(id);
         return guideItemService.saveGuideItem(guideItem);
     }
