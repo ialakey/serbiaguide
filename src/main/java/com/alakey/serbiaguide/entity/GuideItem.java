@@ -1,10 +1,9 @@
 package com.alakey.serbiaguide.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 public class GuideItem {
@@ -17,6 +16,8 @@ public class GuideItem {
     private String description;
 
     @ManyToOne
+    @JoinColumn(name = "guide_id")
+    @JsonBackReference
     private Guide guide;
 
     public Long getId() {
@@ -51,6 +52,7 @@ public class GuideItem {
         this.description = description;
     }
 
+    @JsonIgnore
     public Guide getGuide() {
         return guide;
     }

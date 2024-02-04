@@ -1,5 +1,8 @@
 package com.alakey.serbiaguide.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,7 +16,8 @@ public class Guide {
     private String group;
     private String icon;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "guide")
+    @OneToMany(mappedBy = "guide", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<GuideItem> items;
 
     public Long getId() {
@@ -40,6 +44,7 @@ public class Guide {
         this.icon = icon;
     }
 
+    @JsonIgnore
     public List<GuideItem> getItems() {
         return items;
     }
